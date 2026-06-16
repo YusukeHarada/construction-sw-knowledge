@@ -68,6 +68,7 @@
 | `verification-environment.md` | MIL/SIL/HIL検証環境・テスト自動化 | 技術担当者 |
 | `automation.md` | コード生成・テスト・トレーサビリティの自動化 | 技術担当者 |
 | `shift-left.md` | シフトレフトの考え方・具体的手法・AI活用 | 開発部門 |
+| `misra-c.md` | MISRA-C準拠・コーディング標準・静的解析 要件定義 | 技術担当者・委託先 |
 
 ### 知識整理・改善活動
 
