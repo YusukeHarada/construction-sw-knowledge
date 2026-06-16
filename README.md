@@ -80,6 +80,11 @@
 |---|---|
 | [process-improvement.md](process-improvement.md) | 開発プロセス改善の過去・現在・これから |
 | [ai-utilization.md](ai-utilization.md) | 生成AI・AIエージェントの活用 |
+| [ai-tools-landscape.md](ai-tools-landscape.md) | AIツール全体像（Claude Code・Copilot・ChatGPT等）と車載SW活用 |
+| [dev-tools-landscape.md](dev-tools-landscape.md) | 車載SW開発ツール全体像（ALM・静的解析・単体テスト・HIL等） |
+| [mbd.md](mbd.md) | MBD（モデルベース開発）概要・Simulink/SCADE・建設機械への適用 |
+| [org-design.md](org-design.md) | 組織設計ベストプラクティス（チームトポロジー・コンウェイの法則） |
+| [ota-sbom.md](ota-sbom.md) | OTA・SBOMの概念・規制・ツール・建設機械ロードマップ |
 
 ---
 
