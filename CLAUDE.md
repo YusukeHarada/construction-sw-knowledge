@@ -10,24 +10,39 @@
 
 ## ドキュメント構成
 
-| ファイル | 内容 |
-|---|---|
-| `proposal.md` | 社内提案資料（上司・幹部向け） |
-| `vendor-selection.md` | 委託先選定基準 |
-| `requirements-spec.md` | AUTOSARを前提とした要求仕様の作り方 |
-| `communication-spec.md` | 通信仕様（CAN・Eth）の書き方 |
-| `toolchain.md` | AUTOSARコード生成ツールチェーン |
+| ファイル | 内容 | 対象読者 |
+|---|---|---|
+| `proposal.md` | 社内提案資料（上司・幹部向け） | 非エンジニアの管理職にも伝わる平易な文体 |
+| `vendor-selection.md` | 委託先選定基準 | 技術担当者向け。実務で使えるチェックリスト形式 |
+| `requirements-spec.md` | AUTOSARを前提とした要求仕様の作り方 | AUTOSARの詳細知識がなくても使えるレベル |
+| `communication-spec.md` | 通信仕様（CAN・Eth）の書き方 | 技術担当者・委託先 |
+| `toolchain.md` | AUTOSARコード生成ツールチェーン | 技術担当者 |
 
 ## 背景・前提
 
 - 対象：建設機械向けプラットフォームソフトウェア（BSW・RTE相当）
 - RTOS系：油圧制御等の安全クリティカルな制御系（Classic AUTOSAR領域）
-- Linux系：HMI・ゲートウェイ・人検知・クラウド通信（Adaptive AUTOSAR領域）
+- Linux系：HMI・ゲートウェイ・人検知・クラウド通信（Adaptive AUTOSARまたはLinuxミドルウェア）
 - 機能安全（ISO 25119）およびサイバーセキュリティへの対応が必要
 - 外部委託でAUTOSAR準拠システムを構築し、内製コードを段階的に廃止する方針
 
+## 用語統一ルール
+
+本リポジトリでは以下の表記に統一する。
+
+- Classic AUTOSAR（× AUTOSAR Classic）
+- Adaptive AUTOSAR（× AUTOSAR Adaptive Platform、AP）
+- ArXML（× arxml、ARXML）
+- J1939（× SAE J1939）
+
+## AIアシスタントへの注意事項
+
+- **具体的な数値・製品名・バージョン番号は、自社確認済みの情報以外を追記しない。** 確定していない場合は「要確定」と記載する
+- proposal.md は非エンジニアの幹部が読む想定のため、専門用語には必ず補足を付ける
+- requirements-spec.md・communication-spec.md はテンプレートとして機能する。例示の数値は仮の値であり、実際のシステムに合わせて具体化するのはユーザー自身
+
 ## 資料を更新する際のルール
 
-- 各ドキュメントは独立して読めるように書く
+- 各ドキュメントは独立して読める構成にする（委託先・幹部が単独で受け取る場合を想定）
 - 要求仕様・通信仕様は実際のシステムに合わせて具体化していく
-- 変更理由をコミットメッセージに記載する
+- ステータスはDraft→In Review→Approvedで管理し、READMEの一覧表を更新する
