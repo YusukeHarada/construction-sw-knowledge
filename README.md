@@ -58,6 +58,8 @@
 |---|---|
 | [ee-architecture.md](ee-architecture.md) | E/Eアーキテクチャ変遷（分散型→ドメイン型→ゾーン型→集中型） |
 | [vehicle-os.md](vehicle-os.md) | ビークルOS・オーケストレーション・CASE・ゾーンアーキ・セントラルECU |
+| [incar.md](incar.md) | In-car領域（コックピット・HMI・車内ネットワーク・統合コックピットコントローラ） |
+| [outcar.md](outcar.md) | Out-car領域（V2X・クラウド・フリート管理・遠隔操作・BIM/CIM連携） |
 | [architecture.md](architecture.md) | 将来アーキテクチャ・セキュリティ・ゲートウェイ設計 |
 | [hypervisor.md](hypervisor.md) | SoC Hypervisorによる統合アーキテクチャ |
 | [cloud-connectivity.md](cloud-connectivity.md) | クラウド連携・OTA・IoT Core |
