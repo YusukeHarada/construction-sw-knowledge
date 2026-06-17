@@ -10,7 +10,7 @@
 
 ---
 
-## ドキュメント構成（全43ファイル）
+## ドキュメント構成（全48ファイル）
 
 ### 戦略・提案
 
@@ -20,6 +20,7 @@
 | `sdv.md` | SDV概念・建設機械への考察・ロードマップ | 開発部門・経営層 |
 | `roadmap.md` | フェーズ別ロードマップ・必要技術・人材 | 開発部門・管理職 |
 | `cost-budget.md` | ツール・委託・認証の費用試算とROI分析 | 管理職・経営層 |
+| `construction-vs-automotive.md` | 建設機械が車載ソフトに遅れている理由・構造分析・今後の見込み | 技術担当者・管理職 |
 
 ### 外部委託・選定・移行
 
@@ -54,6 +55,9 @@
 | `hypervisor.md` | SoC Hypervisorによる統合アーキテクチャ（QNX・XEN比較・デュアルSoC推奨理由） | 技術担当者・アーキテクト |
 | `cloud-connectivity.md` | クラウド連携・OTA・IoT Core | 技術担当者・アーキテクト |
 | `digital-twin.md` | デジタルツインの概念・建設機械への適用 | 技術担当者・アーキテクト |
+| `electrification.md` | 建設機械の電動化・BMS・エネルギー管理・AUTOSARとの関係 | 技術担当者・アーキテクト |
+| `autonomous-construction.md` | 自律施工・半自律化の技術概念・自動運転との比較・必要ソフトウェア技術 | 技術担当者・アーキテクト |
+| `bim-cim.md` | BIM/CIM連携・Machine Guidance/Control・i-Construction | 技術担当者・アーキテクト |
 
 ### 規格対応
 
@@ -62,6 +66,7 @@
 | `functional-safety.md` | ISO 25119のHARA・Safety Plan・証跡管理実施ガイド | 技術担当者・安全担当 |
 | `iso26262-vs-iso25119.md` | ISO 26262 vs ISO 25119 の違い・委託先との共通言語 | 技術担当者・安全担当 |
 | `cybersecurity.md` | ISO/SAE 21434のTARA・SecOC・Linuxセキュリティ実施ガイド | 技術担当者 |
+| `regulations.md` | 建設機械の法規制・型式認証・排ガス規制・安全規則とソフトウェアへの影響 | 技術担当者・管理職 |
 
 ### 開発プロセス・品質
 

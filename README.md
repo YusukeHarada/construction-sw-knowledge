@@ -30,6 +30,7 @@
 | [sdv.md](sdv.md) | SDVの概念と建設機械への考察 |
 | [roadmap.md](roadmap.md) | フェーズ別ロードマップ・必要技術・人材 |
 | [cost-budget.md](cost-budget.md) | ツール・委託・認証の費用試算とROI分析 |
+| [construction-vs-automotive.md](construction-vs-automotive.md) | 建設機械が車載ソフトに遅れている理由・構造分析・今後の見込み |
 
 ### 外部委託・選定・移行
 
@@ -64,6 +65,9 @@
 | [hypervisor.md](hypervisor.md) | SoC Hypervisorによる統合アーキテクチャ |
 | [cloud-connectivity.md](cloud-connectivity.md) | クラウド連携・OTA・IoT Core |
 | [digital-twin.md](digital-twin.md) | デジタルツインの概念・建設機械への適用 |
+| [electrification.md](electrification.md) | 建設機械の電動化・BMS・エネルギー管理・AUTOSARとの関係 |
+| [autonomous-construction.md](autonomous-construction.md) | 自律施工・半自律化の技術概念・自動運転との比較・必要ソフトウェア技術 |
+| [bim-cim.md](bim-cim.md) | BIM/CIM連携・Machine Guidance/Control・i-Construction |
 
 ### 規格対応
 
@@ -72,6 +76,7 @@
 | [functional-safety.md](functional-safety.md) | ISO 25119のHARA・Safety Plan・証跡管理実施ガイド |
 | [iso26262-vs-iso25119.md](iso26262-vs-iso25119.md) | ISO 26262 vs ISO 25119 の違い・委託先との共通言語 |
 | [cybersecurity.md](cybersecurity.md) | ISO/SAE 21434のTARA・SecOC・Linuxセキュリティ実施ガイド |
+| [regulations.md](regulations.md) | 建設機械の法規制・型式認証・排ガス規制・安全規則とソフトウェアへの影響 |
 
 ### 開発プロセス・品質
 
