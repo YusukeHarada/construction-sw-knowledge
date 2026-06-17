@@ -52,6 +52,7 @@
 | [diagnostics.md](diagnostics.md) | UDS・診断通信（Dcm・Dem・J1939 DM1/DM2） |
 | [j1939-detail.md](j1939-detail.md) | J1939プロトコル技術詳解（PGN・SPN・DBC・AUTOSAR連携） |
 | [can-vs-j1939.md](can-vs-j1939.md) | 自動車CAN vs J1939 比較整理（フレーム構造・診断・AUTOSAR対応の違い） |
+| [j1939-functional-safety.md](j1939-functional-safety.md) | J1939機能安全通信・アタッチメント対応（E2E保護・タイムアウト設計・J1939-75・アタッチメント別対応） |
 | [bootloader.md](bootloader.md) | Bootloader / フラッシュプログラミング・OTA連携 |
 
 ### アーキテクチャ・技術概念
