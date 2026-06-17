@@ -437,11 +437,107 @@ J1939-76を知っておくべき理由：
 
 ---
 
+## 8. J1939-77（CAN FD Functional Safety Assurance Data）
+
+### 8.1 J1939-77とは
+
+SAE J1939-77（発行：2025年11月、`j1939-77_202511`）は**CAN FD上での機能安全通信を定義した規格**である。J1939-76がClassical CAN（8バイト制限）向けであるのに対し、J1939-77はJ1939-22（CAN FD Data Link Layer）を前提に設計されている。
+
+```
+J1939の機能安全通信規格の対応関係：
+
+Classical CAN（J1939-21ベース）  →  J1939-76（SPDU方式、8バイト制限内に収める）
+CAN FD（J1939-22ベース）        →  J1939-77（Assurance Trailer方式、大ペイロード対応）
+```
+
+| 項目 | J1939-76 | J1939-77 |
+|---|---|---|
+| 対応CAN | Classical CAN（250/500kbps） | CAN FD（J1939-22、データフェーズ最大2Mbps） |
+| 保護データの配置 | データフィールド内に埋め込む（SPDU） | メッセージ末尾に追加する（Assurance Trailer） |
+| CRC強度 | 4/8/16bit（SCRCバリアント） | 32bit または 64bit |
+| シーケンス番号 | 8bit（SC、0〜255循環） | 32bit（より長い周期で繰り返し検出） |
+| ペイロード | 8バイト制限内 | 最大65,526バイト（Profile 3、FD-TP使用） |
+| 接続認証 | SAに依存（リンクローカル） | DataID（アドレス非依存のシステム固有認証） |
+
+### 8.2 J1939-22との関係
+
+J1939-77はJ1939-22が定義する以下の2つのフレーム形式の「予約済み安全領域」を利用する。
+
+- **Multi-PG（マルチPGフレーム）**：J1939-22が導入したコンテナフレーム。1つのCAN FDフレームに複数のPGNを格納できる。このフレーム内にAssurance Trailerを挿入する領域が予約されている。
+- **FD-TP（FD Transport Protocol）**：J1939-22のCAN FD向けTPプロトコル。Classical CAN TPより最大転送サイズが大幅に拡大。FD-TPセッション内にもAssurance Trailerを組み込む設計。
+
+J1939-22がCAN FDの「土台」、J1939-77がその土台の上に乗る「機能安全層」という関係。
+
+### 8.3 Assurance Trailer の構造
+
+J1939-77のAssurance Trailerはメッセージデータの末尾に付加される。Classical CANのSPDU（データ内埋め込み）と異なり、ペイロードデータと分離されているため、データ設計への影響が少ない。
+
+```
+J1939-77 メッセージ構成（概念）：
+
+┌──────────────────────────────────┬────────────────────────────────┐
+│  Application Data（任意長）      │  Assurance Trailer             │
+│  通常の制御・状態データ          │  Sequence Number（32bit）      │
+│                                  │  CRC（32bit または 64bit）     │
+│                                  │  Length（CRC計算対象バイト数） │
+│                                  │  DataID（Profile 2/3のみ）     │
+└──────────────────────────────────┴────────────────────────────────┘
+```
+
+| フィールド | サイズ | 役割 |
+|---|---|---|
+| Sequence Number | 32bit | 送信毎にインクリメント。繰り返し・順序誤りを検出 |
+| CRC | 32bit（Profile 1/2）または 64bit（Profile 3） | データ＋Sequence Numberに対するCRC。破損・誤挿入を検出 |
+| Length | 可変 | CRCの計算対象となったデータのバイト数 |
+| DataID | Profile 2/3のみ | システム固有の接続認証ID。SAに依存しない認証を提供 |
+
+### 8.4 3つのプロファイル
+
+| プロファイル | ペイロード | CRC | DataID | 主な特徴 |
+|---|---|---|---|---|
+| Profile 1 | 固定 8バイト | 32bit | なし | オーバーヘッド最小。Classical CANからの移行に近い使い方 |
+| Profile 2 | 可変 0〜19バイト | 32bit | あり | DataIDによるルーティング対応。ゾーンアーキ対応機器向け |
+| Profile 3 | 最大 65,526バイト | 64bit | あり | 大ペイロード＋最高強度のCRC。将来の高安全要求用途向け |
+
+**DataIDとは**：J1939-76のSPDUではCRC計算にSource Address（SA）を含めることで送信元を識別するが、アドレスクレームによってSAが変わった場合に認証が破れるリスクがある。J1939-77のDataIDはSAに依存しないシステム固有の64bit識別子で、この問題を解決する。
+
+### 8.5 建設機械開発への影響
+
+**現在（Classical CANが主流）**
+
+現行の建設機械J1939バスにはJ1939-77は適用できない。J1939-77はCAN FD（J1939-22）が前提であり、現在のClassical CAN環境では無関係。
+
+**CAN FD移行時（将来）**
+
+`can-fd-tsn.md` で整理しているCAN FD移行を実施する際、J1939-22ベースに切り替えると同時にJ1939-77による機能安全通信が選択肢に入る。
+
+```
+移行のタイミングと機能安全通信規格の対応：
+
+現在（Classical CAN）
+  → J1939-76（SPDU）を適用 ← 今すぐ使える
+
+CAN FD移行後（J1939-22採用時）
+  → J1939-77（Assurance Trailer）が選択肢
+  → J1939-76との後方互換性の設計も要検討
+```
+
+**J1939-77が特に注目される点**：
+1. **32bit Sequence Number**：J1939-76の8bit SCに比べ、長周期の通信やバースト通信でも繰り返し検出精度が高い
+2. **64bit CRC（Profile 3）**：大容量データを1セッションで安全に転送可能（OTA更新・デジタルツイン連携等の将来用途）
+3. **DataIDによるアドレス非依存認証**：アタッチメント交換・アドレスクレーム変動がある建設機械環境に適する
+
+**注意**：J1939-77は2025年11月発行の非常に新しい規格。現時点でAUTOSARの標準モジュール対応状況・BSWベンダ（EB・Vector等）の実装提供状況は要確認。
+
+---
+
 ## 参考規格・資料
 
 | 規格 | 内容 |
 |---|---|
+| SAE J1939-77 | CAN FD Functional Safety Assurance Data（Assurance Trailer・3プロファイル・DataID定義、2025年11月発行） |
 | SAE J1939-76 | Application Layer - Functional Safety（SPDU・Safety Counter・Safety CRC定義） |
+| SAE J1939-22 | CAN FD Data Link Layer（Multi-PG・FD-TP定義。J1939-77の前提） |
 | SAE J1939-75 | Application Layer - Off-Highway Machines（建設・土工機械向けPGN拡張） |
 | SAE J1939-73 | Diagnostics（DM1/DM2・FMI定義） |
 | SAE J1939-81 | Network Management（アドレスクレーム） |
