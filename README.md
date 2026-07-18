@@ -29,6 +29,7 @@
 | [proposal.md](proposal.md) | 社内提案資料（なぜ変えるべきか） |
 | [sdv.md](sdv.md) | SDVの概念と建設機械への考察 |
 | [roadmap.md](roadmap.md) | フェーズ別ロードマップ・必要技術・人材 |
+| [mid-term-platform-roadmap.md](mid-term-platform-roadmap.md) | 開発基盤・ソフトウェアプラットフォーム中期ロードマップ（ツール・CI/CD／AUTOSAR CP／OS・ミドルウェア＋AP／プロセス標準、2027〜2030年度） |
 | [cost-budget.md](cost-budget.md) | ツール・委託・認証の費用試算とROI分析 |
 | [construction-vs-automotive.md](construction-vs-automotive.md) | 建設機械が車載ソフトに遅れている理由・構造分析・今後の見込み |
 
