@@ -174,8 +174,48 @@ AUTOSARツール（DaVinci Developer / EB tresos 等）での設定の流れを�
 2. **SecOCSecuredIPdu** を作成し、元のIPduを参照させる
 3. SecuredIPduに以下を設定する：
    - `SecOCDataLength`：有効ペイロードのビット長
-   - `SecOCFreshnessValueLength`：フレームに含めるFVビット長
-   - `SecOCAuthInfoTxLength`：MACトランケーション長（例：24bit）
+   - `SecOCFreshnessValueLength`：フレッシュネスバリュー**全体**のビット長（例：64bit）
+   - `SecOCFreshnessValueTxLength`：フレームに**送信する**FVビット長（例：4〜8bit、下位ビット）
+   - `SecOCAuthInfoTxLength`：MACトランケーション長（例：24bit（CAN 2.0）/ 64bit（CAN FD））
+
+   ※`SecOCFreshnessValueLength` と `SecOCFreshnessValueTxLength` は混同しやすい。前者はFVMが管理する全体長、後者は帯域節約のためフレームに載せる下位ビット長である。
+
+**ArXML記述例**
+
+油圧制御コマンド（CAN ID: 0x201）にSecOCを適用する場合のArXML断片。値はシステム設計に合わせて確定すること。
+
+```xml
+<!-- SecOC Protected I-PDU の定義 -->
+<SECURED-I-PDU>
+  <SHORT-NAME>HydCtrl_Cmd_Secured</SHORT-NAME>
+  <CONTAINED-I-PDU-PROPS>
+    <CONTAINED-PROPS>
+      <SHORT-NAME>HydCtrl_Cmd</SHORT-NAME>
+    </CONTAINED-PROPS>
+  </CONTAINED-I-PDU-PROPS>
+  <!-- Freshness Value 設定 -->
+  <FRESHNESS-VALUE-LENGTH>40</FRESHNESS-VALUE-LENGTH>
+  <FRESHNESS-VALUE-TX-LENGTH>8</FRESHNESS-VALUE-TX-LENGTH>
+  <!-- MAC 設定 -->
+  <AUTH-INFO-TX-LENGTH>24</AUTH-INFO-TX-LENGTH>
+  <AUTH-ALGORITHM-REF DEST="CRYPTO-ALGO-CONFIG">
+    /AutosarPackages/CryptoConfig/AES128_CMAC
+  </AUTH-ALGORITHM-REF>
+  <!-- 検証失敗時の動作 -->
+  <MESSAGE-LINK-POSITION>0</MESSAGE-LINK-POSITION>
+  <RECEPTION-OVERFLOW-HANDLING>REJECT</RECEPTION-OVERFLOW-HANDLING>
+</SECURED-I-PDU>
+```
+
+**主要パラメータの推奨値**
+
+| パラメータ名 | 意味 | 推奨値 |
+|---|---|---|
+| `SecOCFreshnessValueLength` | FV全体のビット長（FVMが管理） | 40ビット以上（例：64ビット） |
+| `SecOCFreshnessValueTxLength` | フレームに送信するFVビット長 | 4〜8ビット（下位ビット） |
+| `SecOCAuthInfoTxLength` | MACトランケーション長 | 24〜48ビット（CAN 2.0）／ 64ビット（CAN FD） |
+| `SecOCMacVerifyAttempts` | MAC検証失敗を許容する回数 | 3回（要確定） |
+| `SecOCReceptionOverflowStrategy` | 受信バッファあふれ時の動作 | `REJECT`（破棄） |
 
 ### 4.2 FreshnessValueProviderの設定
 

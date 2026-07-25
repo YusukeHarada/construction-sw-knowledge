@@ -112,7 +112,7 @@ ArXML──► │         → パラメータをGUIで設定       │ ──�
 | ツール名 | 役割 | 備考 |
 |---|---|---|
 | **EB tresos Studio** | BSWコンフィグ＋コード生成 | Eclipseベース、オープン性が高い |
-| **EB tresos AutoCore** | BSW本体 | AUTOSAR Classic対応 |
+| **EB tresos AutoCore** | BSW本体 | Classic AUTOSAR対応 |
 
 **特長：** DaVinciよりオープンなアーキテクチャ。EB（Elektrobit）は車載ソフトウェア専門企業。Tier1メーカーからの採用実績が多く、ツールそのものの機能安全認定（ISO 26262 tool confidence）を取得している。
 
@@ -340,7 +340,7 @@ Linux系（HMI・ゲートウェイ・人検知等）にはAdaptive AUTOSARが�
 
 | ツール・フレームワーク | 役割 | 備考 |
 |---|---|---|
-| **AUTOSAR Adaptive Platform（AP）** | ミドルウェア基盤 | SOME/IP・ARA APIを提供 |
+| **Adaptive AUTOSAR** | ミドルウェア基盤 | SOME/IP・ARA APIを提供 |
 | **Vector MICROSAR.AP** | Adaptive AUTOSAR実装 | 商用 |
 | **ETAS RTA-AP** | Adaptive AUTOSAR実装 | 商用 |
 | **vsomeip（COVESA OSS）** | SOME/IP実装 | オープンソース。サポートなしのため機能安全用途には不向き |
@@ -380,7 +380,7 @@ void PersonDetectionApp::OnPersonDetected() {
 
 ### Adaptive AUTOSARの現状
 
-自動車業界でもAdaptive Platform（AP）の実用化は道半ばである。以下の課題が指摘されている。
+自動車業界でもAdaptive AUTOSARの実用化は道半ばである。以下の課題が指摘されている。
 
 - **ツール・ノウハウが未成熟：** Classic AUTOSARと比較して対応ベンダー・事例が少ない
 - **機能安全対応が難しい：** Linux上での機能安全認証は複雑であり、ASIL-Cを超えるレベルへの対応は限定的

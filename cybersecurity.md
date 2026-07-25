@@ -420,15 +420,15 @@ MAC = CMAC(AES-128, 秘密鍵, [メッセージデータ | Freshness Value])
 
 #### SecOC設定パラメータ
 
-| パラメータ名 | 意味 | 推奨値 |
-|-------------|------|--------|
-| `SecOCFreshnessValueLength` | Freshness Valueのビット長 | 40ビット以上 |
-| `SecOCFreshnessValueTxLength` | CANフレームに埋め込むFreshnessのビット長 | 4〜8ビット（下位ビット） |
-| `SecOCAuthInfoTxLength` | MACの切り出し長（全MACをCANに乗せるのは困難） | 24〜48ビット |
-| `SecOCMacVerifyAttempts` | MAC検証失敗を許容する回数 | 3回（要確定） |
-| `SecOCReceptionOverflowStrategy` | 受信バッファあふれ時の動作 | `REJECT`（破棄） |
+> **本書はSecOCの概要のみを扱う。設定パラメータの推奨値・ArXML記述例・鍵ロールオーバー方式・検証手順は `secoc.md` を正本とする。**（値の二重管理を避けるため、本書には転記しない）
 
-> Freshness Valueは全ビットをCANフレームに乗せると帯域を圧迫するため、下位数ビットのみ送信し、上位ビットはFVM（Freshness Value Manager）が管理するのが一般的。
+主要パラメータは以下の5つである。詳細は `secoc.md` 4.1節。
+
+- `SecOCFreshnessValueLength`：フレッシュネスバリュー全体のビット長（FVMが管理）
+- `SecOCFreshnessValueTxLength`：フレームに送信するFVビット長（帯域節約のため下位ビットのみ）
+- `SecOCAuthInfoTxLength`：MACトランケーション長
+- `SecOCMacVerifyAttempts`：MAC検証失敗を許容する回数
+- `SecOCReceptionOverflowStrategy`：受信バッファあふれ時の動作
 
 #### 鍵管理とHSM（Hardware Security Module）の役割
 
@@ -459,34 +459,11 @@ HSMは、ECUの内部チップに内蔵された「鍵専用の金庫」であ�
 | 鍵更新 | OTAまたは整備ツール経由（要確定：更新頻度・手順） | 自社運用 |
 | 鍵廃棄 | 機体廃棄時のHSMリセット | 自社運用 |
 
-> 鍵管理の詳細手順は別途「鍵管理手順書」として作成すること（要確定：担当部門）。
+> 鍵管理の詳細手順は別途「鍵管理手順書」として作成すること（要確定：担当部門）。鍵配布フロー・キーロールオーバー方式の比較は `secoc.md` 3章を参照。
 
 #### SecOC設定のArXML記述例
 
-以下は油圧制御コマンド（CAN ID: 0x201）にSecOCを適用する場合のArXML断片である。実際の値はシステム設計に合わせて確定すること。
-
-```xml
-<!-- SecOC Protected I-PDU の定義 -->
-<SECURED-I-PDU>
-  <SHORT-NAME>HydCtrl_Cmd_Secured</SHORT-NAME>
-  <CONTAINED-I-PDU-PROPS>
-    <CONTAINED-PROPS>
-      <SHORT-NAME>HydCtrl_Cmd</SHORT-NAME>
-    </CONTAINED-PROPS>
-  </CONTAINED-I-PDU-PROPS>
-  <!-- Freshness Value 設定 -->
-  <FRESHNESS-VALUE-LENGTH>40</FRESHNESS-VALUE-LENGTH>
-  <FRESHNESS-VALUE-TX-LENGTH>8</FRESHNESS-VALUE-TX-LENGTH>
-  <!-- MAC 設定 -->
-  <AUTH-INFO-TX-LENGTH>24</AUTH-INFO-TX-LENGTH>
-  <AUTH-ALGORITHM-REF DEST="CRYPTO-ALGO-CONFIG">
-    /AutosarPackages/CryptoConfig/AES128_CMAC
-  </AUTH-ALGORITHM-REF>
-  <!-- 検証失敗時の動作 -->
-  <MESSAGE-LINK-POSITION>0</MESSAGE-LINK-POSITION>
-  <RECEPTION-OVERFLOW-HANDLING>REJECT</RECEPTION-OVERFLOW-HANDLING>
-</SECURED-I-PDU>
-```
+`secoc.md` 4.1節に、油圧制御コマンド（CAN ID: 0x201）へSecOCを適用する場合のArXML断片を記載している。
 
 ---
 

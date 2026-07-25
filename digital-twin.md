@@ -45,7 +45,7 @@ SIL環境は「実機なし・実チップなし」で制御ソフトウェア�
 
 AUTOSARのClassic／Adaptive両方で、ソフトウェアコンポーネント（SWC）やBSWをPCまたはLinuxサーバー上で実行できる形に再ビルドしたものを**仮想ECU（VECU）**と呼ぶ。代表的なツールチェーン：
 
-- **ETAS ISOLAR-EVE**（Classic AUTOSAR向け）：ARXMLから仮想ランタイム環境を生成し、実ECUと同じSWCコードをWindowsまたはLinux上で実行
+- **ETAS ISOLAR-EVE**（Classic AUTOSAR向け）：ArXMLから仮想ランタイム環境を生成し、実ECUと同じSWCコードをWindowsまたはLinux上で実行
 - **Vector CANoe/AUTOSAR**：仮想ノードとしてSWCを動作させ、CAN/Ethernetシミュレーション環境と接続
 - **dSPACE VEOS**：PC上でSILテストを実行し、後でHILへシームレスに移行
 

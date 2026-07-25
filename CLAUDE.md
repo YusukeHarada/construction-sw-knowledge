@@ -135,9 +135,11 @@
 
 - Classic AUTOSAR（× AUTOSAR Classic）
 - Adaptive AUTOSAR（× AUTOSAR Adaptive Platform、AP）
-- ArXML（× arxml、ARXML）
-- J1939（× SAE J1939）
-- SOME/IP（× SomeIP、someip）
+- ArXML（× arxml、ARXML）※コード・ファイルパス中の `.arxml` は例外
+- J1939（× SAE J1939）※規格枝番付き（SAE J1939-73 等）は正式表記のため可
+- SOME/IP（× SomeIP、someip、SOME-IP）※AUTOSARモジュール名 `SomeIpTransformer`・OSS製品名 `vsomeip` は例外
+- AgPL（ISO 25119の安全水準）と PL（ISO 13849の安全水準）を混用しない。ISO 25119に対して「PLd」と書かない
+- 「Phase 1/2/3」は `roadmap.md` の全社ロードマップ（今〜2年／2〜5年／5〜10年）のみを指す。個別領域の段階計画は領域名を接頭辞に付ける（移行Step・安全Stage・NW世代・検証環境Step・電動化Step・BIM連携Step・MISRA適用Step・In-car世代・Out-car世代）
 
 ---
 

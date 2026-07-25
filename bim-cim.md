@@ -2,6 +2,9 @@
 
 対象読者：技術担当者・アーキテクト
 
+
+> **段階区分の呼称について**：本書の「BIM連携Step」は本書固有の段階区分であり、`roadmap.md` の全社ロードマップ「Phase 1/2/3」（今〜2年 / 2〜5年 / 5〜10年）とは別体系である。対応関係は `roadmap.md` 1章を参照。
+
 ---
 
 ## 1. BIM/CIMとは
@@ -193,7 +196,7 @@ BIM/CIM原則化（2023年〜）
 ### フェーズ別展開方針
 
 ```
-Phase 1（〜2年）        Phase 2（2〜4年）        Phase 3（4〜6年）
+BIM連携Step 1（〜2年）        BIM連携Step 2（2〜4年）        BIM連携Step 3（4〜6年）
 ────────────────────────────────────────────────────────────────────
 施工ガイダンス          Machine Control          クラウドBIM連携
 （HMI表示）             （半自律制御）           （進捗自動フィードバック）
@@ -218,7 +221,7 @@ BIM/CIM連携において、Classic AUTOSAR ECUが直接BIMデータを扱う必
 | 安全クリティカルな制御 | Classic AUTOSAR ECU（安全系） | ISO 25119 ASIL相当 |
 | 安全監視（オーバーライド） | Classic AUTOSAR ECU | 異常時は自動停止 |
 
-Machine Controlを実装する場合、油圧制御の自動化はISO 25119に基づく機能安全設計が必要となる。Phase 2以降の検討では、`functional-safety.md`・`iso26262-vs-iso25119.md` との整合を確認すること。
+Machine Controlを実装する場合、油圧制御の自動化はISO 25119に基づく機能安全設計が必要となる。BIM連携Step 2以降の検討では、`functional-safety.md`・`iso26262-vs-iso25119.md` との整合を確認すること。
 
 ---
 

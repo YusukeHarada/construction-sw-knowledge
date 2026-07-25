@@ -72,7 +72,7 @@ Hypervisorとは複数のOSを同一ハードウェア上で安全に分離・�
 
 ### メリット
 
-- 単一SoC上でCAN/LIN制御（Classic）とEthernet/SOME-IP通信・AI処理（Adaptive/Linux）を共存
+- 単一SoC上でCAN/LIN制御（Classic）とEthernet/SOME/IP通信・AI処理（Adaptive/Linux）を共存
 - SoC数削減によるコスト低減（デュアルSoC比で約20%コスト削減との試算あり）
 - 配線・消費電力・基板スペースの削減
 - OTA更新をAdaptive側で柔軟に対応できる

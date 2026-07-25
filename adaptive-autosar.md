@@ -166,7 +166,7 @@ Adaptive AUTOSARのサービスはFRSI（Functional Requirements of a Service In
 | ツール | ベンダー | 役割 |
 |---|---|---|
 | DaVinci Adaptive Developer | Vector Informatik | ArXML編集・コード生成（Adaptive向け） |
-| EB tresos Adaptive Studio | Elektrobit | Adaptive Platform設定・生成 |
+| EB tresos Adaptive Studio | Elektrobit | Adaptive AUTOSAR設定・生成 |
 | AUTOSAR Builder | Eclipse ベース | AUTOSAR設計・検証 |
 | CANoe / Scope | Vector | SOME/IP通信解析・テスト |
 

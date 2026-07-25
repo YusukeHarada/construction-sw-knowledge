@@ -3,6 +3,9 @@
 対象読者：技術担当者  
 関連ファイル：`verification-environment.md`（概念・全体像）、`dev-process.md`（CI/CD）、`functional-safety.md`（機能安全証跡）
 
+
+> **段階区分の呼称について**：本書の「検証環境Step」は本書固有の段階区分であり、`roadmap.md` の全社ロードマップ「Phase 1/2/3」（今〜2年 / 2〜5年 / 5〜10年）とは別体系である。対応関係は `roadmap.md` 1章を参照。
+
 ---
 
 ## 1. SIL環境の構築手順
@@ -262,7 +265,7 @@ def test_pump_pressure_control():
 
 ### 5.2 J1939通信のHILシミュレーション
 
-- 建設機械はSAE J1939プロトコルを多用するため、CANoeにJ1939シンボルDBを読み込ませてSPN/PGN単位でのテストを実施
+- 建設機械はJ1939プロトコルを多用するため、CANoeにJ1939シンボルDBを読み込ませてSPN/PGN単位でのテストを実施
 - 複数ECU（エンジンECU・油圧コントローラ・表示器等）をHIL上で模擬し、実機同等の通信シーケンスを再現する
 
 ### 5.3 現場環境テストの代替シミュレーション手法
@@ -278,20 +281,20 @@ def test_pump_pressure_control():
 ## 6. 段階的な環境整備計画
 
 ```
-Phase 1（〜2027年）：SIL環境の整備
+検証環境Step 1（〜2027年）：SIL環境の整備
   ・AUTOSAR SIL kit（OSS）または vVIRTUALtargetを導入
   ・基本的なBSW・SWCのSILテストをGitLab CIに組み込み
   ・SWCレベルの単体テスト自動化（GoogleTest等）
   ・委託先にSIL環境の整備・テスト実施を要件として含める
 
-Phase 2（〜2029年）：HIL環境の構築
+検証環境Step 2（〜2029年）：HIL環境の構築
   ・HILシミュレータ（dSPACE SCALEXIO等）の選定・調達（要確定）
   ・油圧プラントモデルの整備（Simulink / AMESim）
   ・統合テスト・フォルトインジェクションテストをHILで実施
   ・Polarion等によるテストケース管理の本格運用開始
   ・ISO 25119証跡としての活用開始
 
-Phase 3（2030年以降）：デジタルツイン連携
+検証環境Step 3（2030年以降）：デジタルツイン連携
   ・実機フィールドデータをプラントモデルにフィードバック
   ・仮想施工シナリオでの長期耐久テスト（`digital-twin.md`参照）
   ・HIL環境とデジタルツインの統合によるソフトウェア更新前のOTA検証
@@ -337,5 +340,5 @@ Phase 3（2030年以降）：デジタルツイン連携
 | `functional-safety.md` | ISO 25119 Safety Plan・証跡管理 |
 | `autosar-modules.md` | BSW・Dem・Dcmモジュール仕様 |
 | `diagnostics.md` | DTC・UDS診断の詳細 |
-| `digital-twin.md` | Phase 3のデジタルツイン連携構想 |
+| `digital-twin.md` | 検証環境Step 3のデジタルツイン連携構想 |
 | `migration-plan.md` | 委託先との役割分担・マイルストーン |

@@ -271,7 +271,7 @@ SimulinkとClassic AUTOSARを統合するツールボックス。
 
 **使用ツール**：dSPACE SCALEXIO、Vector CANoe、NI VeriStand
 
-**HIL環境のコスト**：機材・ソフトウェアで数千万円規模になることが多い（要確定）。外部委託先が保有している場合はその設備を活用する契約を検討する。
+**HIL環境のコスト**：商用HILフルセット（dSPACE SCALEXIO等）は機材・ソフトウェアで数千万円規模になることが多い（要確定）。外部委託先が保有している場合はその設備を活用する契約を検討する。なお学習・PoC目的であれば汎用I/Oボードによる自作HIL最小構成（50万円規模、`verification-environment.md` 参照）から着手できる。
 
 ---
 

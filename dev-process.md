@@ -67,7 +67,7 @@ HIL環境がなくてもCIで自動テストできる構成がSILである。ECU
 |---|---|---|
 | **Unit SIL** | RTOS依存を抽象化してビジネスロジック単体テスト | Google Test / CMock / Unity |
 | **Component SIL** | 仮想ECU環境で通信・タイミング検証 | dSPACE VEOS / CANoe .NET |
-| **System SIL** | 複数仮想ECUをネットワーク結合した機能シナリオ検証 | AUTOSAR Adaptive Simulator |
+| **System SIL** | 複数仮想ECUをネットワーク結合した機能シナリオ検証 | Adaptive AUTOSAR向けシミュレータ |
 
 ### GitLab CI パイプライン YAMLサンプル（全ステージ構成）
 
