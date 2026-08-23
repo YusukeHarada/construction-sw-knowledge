@@ -38,6 +38,7 @@
 |---|---|
 | [vendor-selection.md](vendor-selection.md) | 委託先選定基準・PoC評価 |
 | [migration-plan.md](migration-plan.md) | 既存内製コードからAUTOSARへの移行計画 |
+| [autosar-alternatives.md](autosar-alternatives.md) | AUTOSAR導入判断のための代替アプローチと注意点（MBD・静的解析・失敗パターン等） |
 
 ### 技術仕様
 
